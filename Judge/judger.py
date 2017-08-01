@@ -98,9 +98,9 @@ def judge_one(Id, pid, data_num, time_limit, memory_limit, language, special_jud
             }
             outbuffer = lorun.special(spjcfg)
             if outbuffer:
-                print outbuffer
-                update_result(Id, 'wrong answer', outbuffer)
-                return {'result': 4}
+                #print outbuffer
+                #update_result(Id, 'wrong answer', outbuffer)
+                return {'result': 4, 'prompt': outbuffer}
             return rst
         else: #否则为普通评测方式
             ftmp = open(tmp_path)
