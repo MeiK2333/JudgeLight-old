@@ -2,8 +2,6 @@
 
 #任务队列长度
 queue_size = 0
-#评测线程数
-count_thread = 1
 
 #redis配置
 #redis主机
@@ -19,9 +17,9 @@ redis_hash_name = "judge_result"
 
 
 #评测目录
-work_dir = "/home/meik/judge/work"
+work_dir = "/home/meik/JudgeLight/work"
 #数据目录
-data_dir = "/home/meik/data"
+data_dir = "/home/meik/JudgeLight/data"
 
 #允许的语言列表
 language_list = [
@@ -43,6 +41,9 @@ file_name = {
     "python3": "main.py",
 }
 
+#限制运行用户
+#RUNNER = 1000
+
 #编译选项
 compile_cmd = {
     "gcc": ["gcc", "main.c", "-o", "main", "-Wall", "-lm", "-O2", "-std=c99"],
@@ -55,7 +56,7 @@ compile_cmd = {
 #编译时限(MS)
 COMPILE_TIME = 1000
 #编译内存限制(KB)
-COMPILE_MEMORY = 20000
+COMPILE_MEMORY = 200000
 
 #运行选项
 run_cmd = {
@@ -66,3 +67,8 @@ run_cmd = {
     "python2": ["python2", "main.py"],
     "python3": ["python3", "main.py"],
 }
+
+#Special Judge
+SPJ_NAME = 'spj'
+SPJ_TIME = 1000
+SPJ_MEMORY = 200000

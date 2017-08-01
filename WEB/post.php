@@ -34,6 +34,20 @@
         echo json_encode($statu);
         return;
     }
+    if (is_numeric($_POST['time_limit'])) {
+        $arr['time_limit'] = (int)$_POST['time_limit'];
+    } else {
+        $statu['msg'] = "Must provide time_limit";
+        echo json_encode($statu);
+        return;
+    }
+    if (is_numeric($_POST['memory_limit'])) {
+        $arr['memory_limit'] = (int)$_POST['memory_limit'];
+    } else {
+        $statu['msg'] = "Must provide memory_limit";
+        echo json_encode($statu);
+        return;
+    }
     if ($_POST['special_judge'] == 'yes') {
             $arr['special_judge'] = true;
     } else {
@@ -55,7 +69,7 @@
     $redis = new Redis();
     $redis->connect('127.0.0.1', 6379);
     $redis->lpush("judge_list", json_encode($arr)); //加入redis评测队列中
-    $arr['result'] = "in queue";
+    $arr['result'] = "submit";
     $arr['prompt'] = "";
     $redis->hset("judge_result", $arr['id'], json_encode($arr)); //以id为键加入redis中,保证id必须唯一，id是查询结果的唯一凭证
     $statu['statu'] = true;
